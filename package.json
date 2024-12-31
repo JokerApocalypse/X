@@ -1,0 +1,16 @@
+{
+  "name": "whatsapp-chaos-bot",
+  "version": "1.0.0",
+  "description": "Bot de test de chaos pour WhatsApp",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "bailey": "^1.0.0",
+    "qrcode-terminal": "^0.12.0",
+    "winston": "^3.3.3"
+  },
+  "author": "",
+  "license": "ISC"
+}
