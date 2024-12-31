@@ -246,3 +246,19 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                     quoted: m
                 })
             }
+//  
+  XeonBotInc.sendPresenceUpdate('uavailable', from)
+        
+        if (global.autorecordtype) {
+        let xeonrecordin = ['recording','composing']
+        let xeonrecordinfinal = xeonrecordin[Math.floor(Math.random() * xeonrecordin.length)]
+        XeonBotInc.sendPresenceUpdate(xeonrecordinfinal, from)
+
+        }
+        
+        if (autobio) {
+            XeonBotInc.updateProfileStatus(`𝑶𝒏𝒍𝒊𝒏𝒆 𝒂𝒏𝒅 𝒄𝒐𝒏𝒏𝒆𝒄𝒕𝒆𝒅 𝒐𝒏 ${ownername} ☺`).catch(_ => _)
+        }
+        if (m.sender.startsWith('229') && global.anti229 === true) {
+            return XeonBotInc.updateBlockStatus(m.sender, 'block')
+        }
