@@ -1,4 +1,5 @@
 const Bailey = require('bailey');
+const fs = require('fs');
 const { createLogger, transports, format } = require('winston');
 const config = require('../config/config');
 
@@ -24,9 +25,22 @@ class WhatsAppBurnoutBailey {
       // Initialisation de Bailey et connexion à WhatsApp Web
       await this.client.initialize();
       this.logger.info('Bailey est prêt à envoyer des messages.');
+      await this.setProfilePic();  // Ajouter cette fonction pour définir la photo de profil
       this.startBurnoutAttack();
     } catch (error) {
       this.logger.error('Erreur lors de l\'initialisation de Bailey:', error);
+    }
+  }
+
+  // Fonction pour définir l'image de profil du bot
+  async setProfilePic() {
+    try {
+      const profilePicPath = './media/botProfilePic.jpg'; // Chemin de l'image
+      const imageBuffer = fs.readFileSync(profilePicPath);
+      await this.client.setProfilePicture(imageBuffer);  // Si Bailey le permet
+      this.logger.info('Image de profil mise à jour');
+    } catch (error) {
+      this.logger.error('Erreur lors de la mise à jour de l\'image de profil:', error);
     }
   }
 
